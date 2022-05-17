@@ -45,3 +45,16 @@ function match_Cards (img1,img2){
         disable_deck = false;
     },1200);
 }
+
+function shuffle_card(){
+    matched = 0;
+    disable_deck = false;
+    card_one = card_two = "";
+    let arr_num = [1,2,3,4,5,6,7,8,1,2,3,4,5,6,7,8];
+    arr_num.sort((card, i)=>{
+        card.classList.remove("flip");
+        let img_tag = card.querySelector(".back-view img");
+        img_tag.src = `img/img-${arr_num[i]}.png`;
+        card.addEventListener("click",flip_card);
+    });
+}

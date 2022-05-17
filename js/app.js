@@ -21,4 +21,27 @@ function flip_card ({target:clickedCard}){
 }
 
 
-function match_Cards (img1,img2){}
+function match_Cards (img1,img2){
+    if (img1 === img2) {
+        matched ++;
+        if (matched == 8) {
+            setTimeout(() => {
+                return shufle_card();
+            },1000);
+        }
+        card_one.removeEventListener("click",flip_card);
+        card_two.removeEventListener("click",flip_card);
+        card_one = card_two = "";
+        return disable_deck = false;
+    }
+    setTimeout(()=>{
+        card_one.classList.add("shake");
+        card_two.classList.add("shake");
+    },400);
+    setTimeout(()=>{
+        card_one.classList.remove("shake","flip");
+        card_two.classList.remove("shake","flip");
+        card_one = card_two = "";
+        disable_deck = false;
+    },1200);
+}
